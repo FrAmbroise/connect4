@@ -52,14 +52,14 @@ class Puissance4 {
       //ATTENTION, la page html est écrite de haut en bas. Les indices 
       //pour le jeu vont de bas en haut (compteur i de la boucle)
         for (let i = this.rows - 1; i >= 0; i--) {
-        let tr = table.appendChild(document.createElement('tr'));
-        for (let j = 0; j < this.cols; j++) {
-            let td = tr.appendChild(document.createElement('td'));
-            let colour = this.board[i][j];
-            if (colour)
-                td.className = 'player' + colour;
-            td.dataset.column = j;
-        }
+          let tr = table.appendChild(document.createElement('tr'));
+          for (let j = 0; j < this.cols; j++) {
+              let td = tr.appendChild(document.createElement('td'));
+              let colour = this.board[i][j];
+              if (colour)
+                  td.className = 'player' + colour;
+              td.dataset.column = j;
+          }
         }
         this.element.innerHTML = '';
         this.element.appendChild(table);
@@ -174,7 +174,6 @@ class Puissance4 {
       count = 0;
       shift = row + column;
       for (let i = Math.max(shift - this.cols + 1, 0); i < Math.min(this.rows, shift + 1); i++) {
-        console.log(i,shift-i,shift)
         count = (this.board[i][shift - i] == player) ? count+1 : 0;
         if (count >= 4) return true;
       }
