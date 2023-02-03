@@ -27,9 +27,9 @@ class Puissance4 {
         this.moves = 0;
       /* un entier indiquant le gagnant:
           null: la partie continue
-             0: la partie est nulle
-             1: joueur 1 a gagné
-             2: joueur 2 a gagné
+              0: la partie est nulle
+              1: joueur 1 a gagné
+              2: joueur 2 a gagné
       */
         this.winner = null;
   
@@ -103,6 +103,7 @@ class Puissance4 {
         }
   
         let column = event.target.dataset.column;
+        console.log(column);
         if (column !== undefined) {
         //attention, les variables dans les datasets sont TOUJOURS 
         //des chaînes de caractères. Si on veut être sûr de ne pas faire de bêtise,
@@ -143,12 +144,12 @@ class Puissance4 {
     }
   
     /* 
-     Cette fonction vérifie si le coup dans la case `row`, `column` par
-     le joueur `player` est un coup gagnant.
-     
-     Renvoie :
-       true  : si la partie est gagnée par le joueur `player`
-       false : si la partie continue
+      Cette fonction vérifie si le coup dans la case `row`, `column` par
+      le joueur `player` est un coup gagnant.
+
+      Renvoie :
+        true  : si la partie est gagnée par le joueur `player`
+        false : si la partie continue
    */
       win(row, column, player) {
           // Horizontal
@@ -174,7 +175,7 @@ class Puissance4 {
       count = 0;
       shift = row + column;
       for (let i = Math.max(shift - this.cols + 1, 0); i < Math.min(this.rows, shift + 1); i++) {
-        console.log(i,shift-i,shift)
+        //console.log(i,shift-i,shift)
         count = (this.board[i][shift - i] == player) ? count+1 : 0;
         if (count >= 4) return true;
       }
